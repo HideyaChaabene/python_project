@@ -110,7 +110,7 @@ class MainWindow(QMainWindow):
     self.ui.start_filter.clicked.connect(self.filter_packets)
     # Bouton pour effacer les filtres
     self.ui.clear_filter_button.clicked.connect(self.clear_filters)
-    
+    #self.ui.save_file.clicked.connect()
     #profil buttons
     self.ui.editbtn.clicked.connect(partial(self.nav_profil_page,"edit_form"))
     self.ui.deletbtn.clicked.connect(partial(self.nav_profil_page,"delate"))

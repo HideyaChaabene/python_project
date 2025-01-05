@@ -1115,6 +1115,17 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_27.addWidget(self.clear_sniffing)
 
+        self.save_file = QPushButton(self.frame_20)
+        self.save_file.setObjectName(u"save_file")
+        self.save_file.setMinimumSize(QSize(150, 40))
+        self.save_file.setMaximumSize(QSize(150, 40))
+        self.save_file.setStyleSheet(u"border-radius:10px;\n"
+"border: 1px solid #008080;\n"
+"background-color: #008080;\n"
+"color: #ffffff;")
+
+        self.horizontalLayout_27.addWidget(self.save_file)
+
 
         self.verticalLayout_25.addWidget(self.frame_20)
 
@@ -1577,7 +1588,7 @@ class Ui_MainWindow(object):
         self.index_stack.setCurrentIndex(0)
         self.form_stack.setCurrentIndex(0)
         self.pages_screen.setCurrentIndex(0)
-        self.packets.setCurrentIndex(1)
+        self.packets.setCurrentIndex(0)
         self.profil_edit.setCurrentIndex(0)
 
 
@@ -1669,6 +1680,7 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem9 = self.tableWidget.horizontalHeaderItem(9)
         ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"Packet Type ", None));
         self.clear_sniffing.setText(QCoreApplication.translate("MainWindow", u"Clear ", None))
+        self.save_file.setText(QCoreApplication.translate("MainWindow", u"save file ", None))
         self.ip_src.setText("")
         self.ip_src.setPlaceholderText(QCoreApplication.translate("MainWindow", u"IP Source Adresse", None))
         self.ip_dest.setPlaceholderText(QCoreApplication.translate("MainWindow", u"IP Destination Adresse", None))

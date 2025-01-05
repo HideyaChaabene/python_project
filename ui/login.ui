@@ -2325,7 +2325,7 @@ border: 1px  solid #008080;</string>
                         <item>
                          <widget class="QStackedWidget" name="packets">
                           <property name="currentIndex">
-                           <number>1</number>
+                           <number>0</number>
                           </property>
                           <widget class="QWidget" name="capture">
                            <layout class="QVBoxLayout" name="verticalLayout_25">
@@ -2489,6 +2489,31 @@ color: #ffffff;</string>
                                  </property>
                                  <property name="text">
                                   <string>Clear </string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QPushButton" name="save_file">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>150</width>
+                                   <height>40</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>150</width>
+                                   <height>40</height>
+                                  </size>
+                                 </property>
+                                 <property name="styleSheet">
+                                  <string notr="true">border-radius:10px;
+border: 1px solid #008080;
+background-color: #008080;
+color: #ffffff;</string>
+                                 </property>
+                                 <property name="text">
+                                  <string>save file </string>
                                  </property>
                                 </widget>
                                </item>
