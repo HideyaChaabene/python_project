@@ -60,7 +60,7 @@ class MainWindow(QMainWindow):
   packet_filtered = Signal(str)  
   def __init__(self):
     QMainWindow.__init__(self)
-    self.ui = Ui_MainWindow()
+    self.ui = Ui_MainWindow() #appel lohin.py
     self.ui.setupUi(self) 
 
     # Initialisation de la base de données
@@ -83,6 +83,7 @@ class MainWindow(QMainWindow):
     self.ui.siginBtn.clicked.connect(self.handle_login)
     self.ui.signupBtn.clicked.connect(self.handle_signup)
     self.ui.restbtn.clicked.connect(self.reset_password)
+    #nav bar
     self.ui.to_packet.clicked.connect(partial(self.navigate_to_page_bar, "packet"))
     self.ui.to_packet_2.clicked.connect(partial(self.navigate_to_page_bar, "packet"))
     self.ui.to_menace.clicked.connect(partial(self.navigate_to_page_bar, "menace"))
@@ -93,14 +94,10 @@ class MainWindow(QMainWindow):
     self.ui.to_profil_2.clicked.connect(partial(self.navigate_to_page_bar, "profil"))
     self.ui.to_visual.clicked.connect(partial(self.navigate_to_page_bar, "visual"))
     self.ui.to_visual_2.clicked.connect(partial(self.navigate_to_page_bar, "visual"))
+    
+    #sniffingg buttons
     self.ui.to_capture.clicked.connect(partial(self.nav_packet_page,"capture"))
     self.ui.to_filtrer.clicked.connect(partial(self.nav_packet_page, "filtrer"))
-    self.ui.editbtn.clicked.connect(partial(self.nav_profil_page,"edit_form"))
-    self.ui.deletbtn.clicked.connect(partial(self.nav_profil_page,"delate"))
-    self.ui.logout.clicked.connect(self.logout)
-    self.ui.logout_2.clicked.connect(self.logout)
-    
-    #sniffing button 
     self.captured_packets = []
     self.sniffing = False
     
@@ -111,9 +108,17 @@ class MainWindow(QMainWindow):
     #flitre button 
     # Bouton pour appliquer les filtres
     self.ui.start_filter.clicked.connect(self.filter_packets)
-
     # Bouton pour effacer les filtres
     self.ui.clear_filter_button.clicked.connect(self.clear_filters)
+    
+    #profil buttons
+    self.ui.editbtn.clicked.connect(partial(self.nav_profil_page,"edit_form"))
+    self.ui.deletbtn.clicked.connect(partial(self.nav_profil_page,"delate"))
+    self.ui.logout.clicked.connect(self.logout)
+    self.ui.logout_2.clicked.connect(self.logout)
+
+    
+
   
   #Function to display notification
   def showNotif(self, msg):
