@@ -1,0 +1,219 @@
+
+//===================================================//
+// FILE AUTO-GENERATED. PUT YOUR DEFAULT STYLES HERE. 
+// THESE STYLES WILL OVERIDE THE THEME STYLES
+//====================================================//
+#centralwidget{
+  border-radius: 20px;
+  //background-color: $COLOR_ACCENT_1;
+  border: none;
+}
+
+#header, #main_body{
+  background-color: transparent;
+  background: transparent;
+  border: none;
+}
+
+#close_window_button, #close_window_button_2{
+  border: radius 12px;
+  background-color: transparent;
+}
+
+QLineEdit{
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 2px  solid $COLOR_BACKGROUND_5;
+
+  &:hover {
+    border: $BORDER_SELECTION_2;
+    color: $COLOR_TEXT_1;
+  }
+
+  &:focus {
+      border: $BORDER_SELECTION_3;
+  }
+
+  &:selected {
+      background-color: $COLOR_ACCENT_2;
+      color: $COLOR_BACKGROUND_4;
+  }
+}
+
+#form_stack QPushButton{
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 2px  solid $COLOR_BACKGROUND_5;
+  background-color: $COLOR_ACCENT_1 ;
+  color: $COLOR_BACKGROUND_3;
+  &:hover {
+    background-color: $COLOR_ACCENT_3;
+    color: $COLOR_BACKGROUND_3;
+  }
+
+  &:focus {
+    background-color: $COLOR_ACCENT_1 ;
+    color: $COLOR_BACKGROUND_1;
+  }
+
+  &:selected {
+    background-color: $COLOR_ACCENT_1 ;
+    color: $COLOR_BACKGROUND_1;
+  }
+}
+#index_stack {
+  background-color: $COLOR_ACCENT_1 ;
+  border-top-right-radius:100px ;
+  border-bottom-right-radius: 100px;
+
+}
+#index_stack *{
+  color: $COLOR_BACKGROUND_3;
+  background-color: transparent;
+}
+#index_stack QPushButton{
+  padding: 8px 10px;
+  border-radius: 8px;
+  background-color: transparent;
+  border: 2px  solid $COLOR_BACKGROUND_1;
+  color: $COLOR_BACKGROUND_1;
+  &:hover {
+    border: 2px  solid $COLOR_BACKGROUND_5;
+    background-color: $COLOR_ACCENT_1 ;
+    color: $COLOR_BACKGROUND_1;
+  }
+
+  &:focus {
+    border: 2px  solid $COLOR_BACKGROUND_5;
+    background-color: $COLOR_ACCENT_3 ;
+    color: $COLOR_BACKGROUND_3;
+  }
+
+  &:selected {
+    border: 2px  solid $COLOR_BACKGROUND_5;
+    background-color: $COLOR_ACCENT_3 ;
+    color: $COLOR_BACKGROUND_3;
+  }
+}
+
+#frame_4 QPushButton, #frame_8 QPushButton  {
+  background-color: transparent;
+  border: 2px solid $COLOR_BACKGROUND_3;
+}
+
+
+#notificationSlide{
+  background-color: $COLOR_BACKGROUND_5 ;
+  border-radius: 10px;
+}
+
+#notificationSlide *{
+  background-color: transparent;
+ // color : $COLOR_BACKGROUND_1;
+}
+
+#icon_only_widegt {
+   background-color: #008080;
+}
+
+#icon_text_widget_3{
+  background-color: #008080;
+}
+
+
+#frame_15 QPushButton{
+  background-color: transparent;
+  &:hover {
+    border: 2px  solid $COLOR_BACKGROUND_5;
+    background-color: $COLOR_ACCENT_1 ;
+    color: $COLOR_BACKGROUND_1;
+  }
+
+  &:focus {
+    border: 2px  solid $COLOR_BACKGROUND_5;
+    background-color: $COLOR_ACCENT_3 ;
+    color: $COLOR_BACKGROUND_3;
+  }
+
+  &:selected {
+    border: 2px  solid $COLOR_BACKGROUND_5;
+    background-color: $COLOR_ACCENT_3 ;
+    color: $COLOR_BACKGROUND_3;
+  }
+}
+
+#frame_17 QPushButton{
+  background-color: transparent;
+  &:hover {
+    border: 2px  solid $COLOR_BACKGROUND_5;
+    background-color: $COLOR_ACCENT_1 ;
+    color: $COLOR_BACKGROUND_1;
+  }
+
+  &:focus {
+    border: 2px  solid $COLOR_BACKGROUND_5;
+    background-color: $COLOR_ACCENT_3 ;
+    color: $COLOR_BACKGROUND_3;
+  }
+
+  &:selected {
+    border: 2px  solid $COLOR_BACKGROUND_5;
+    background-color: $COLOR_ACCENT_3 ;
+    color: $COLOR_BACKGROUND_3;
+  }
+}
+#frame_40 QPushButton{
+  background-color: transparent;
+  &:hover {
+    border: 2px  solid $COLOR_BACKGROUND_5;
+    background-color: $COLOR_ACCENT_1 ;
+    color: $COLOR_BACKGROUND_1;
+  }
+
+  &:focus {
+    border: 2px  solid $COLOR_BACKGROUND_5;
+    background-color: $COLOR_ACCENT_3 ;
+    color: $COLOR_BACKGROUND_3;
+  }
+
+  &:selected {
+    border: 2px  solid $COLOR_BACKGROUND_5;
+    background-color: $COLOR_ACCENT_3 ;
+    color: $COLOR_BACKGROUND_3;
+  }
+}
+
+#menuBtn_3{
+  background-color:#008080;
+}
+
+#profilPhoto_2{
+  background-color: rgb(255, 255, 255);
+  border-radius : 60px;
+  border:1px solid black;
+}
+
+#main_screen QPushButton {
+  background-color:transparent;
+  border-radius:20px;
+  color: black;
+  border: 1px solid #008080;
+  &:hover {
+    border: 2px  solid $COLOR_BACKGROUND_5;
+    background-color: $COLOR_ACCENT_1 ;
+    color: $COLOR_BACKGROUND_1;
+  }
+
+  &:focus {
+    border: 2px  solid $COLOR_BACKGROUND_5;
+    background-color: $COLOR_ACCENT_1 ;
+    color: $COLOR_BACKGROUND_1;
+  }
+
+  &:selected {
+    border: 2px  solid $COLOR_BACKGROUND_5;
+    background-color: $COLOR_ACCENT_1 ;
+    color: $COLOR_BACKGROUND_1;
+  }  
+}
+

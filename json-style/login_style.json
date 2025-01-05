@@ -1,0 +1,147 @@
+{
+  "QMainWindow": [
+    {
+      "title": "FlowCaptor",
+      "icon": ":/font_awesome_brands/icons/font_awesome/brands/windows.png",
+      "frameless": true,
+      "transluscentBg": true,
+      "navigation": [
+        {
+          "close": "close_window_button",
+					"moveWindow": "header"
+         
+        }
+      ]
+      
+    }
+  ],
+
+  "QSettings": [
+    {
+      "ThemeSettings": [
+        {
+          "CustomTheme": [
+            {
+              "Background-color": "#F5F5F5",
+              "Text-color": "#333333",
+              "Accent-color": "#008080",
+              "Icons-color": "#333333",
+              "Theme-name": "Modern Teal Slate",
+              "Default-Theme": true
+            },
+						{
+              "Background-color": "#333333",
+              "Text-color": "#F5F5F5",
+              "Accent-color": "#005555",
+              "Icons-color": "#F5F5F5",
+              "Theme-name": "Midnight Teal Slate",
+              "Default-Theme": false
+            }
+          ]
+        }
+      ],
+      "AppSettings": {
+        "OrginizationName": "FlowCaptor",
+        "ApplicationName": "FlowCaptor",
+        "OrginizationDormain": "FlowCaptor.org"
+      }
+    }
+  ],
+  "QCustomQStackedWidget":[
+		{
+			"name":"index_stack",
+			"navigation":[
+				{
+					"navigationButtons":[
+						{
+							"to_signup": "welcome_signup_pg",
+							"to_login": "welcome_login_pg"
+						}
+					]
+				}
+			],
+      "transitionAnimation":[
+				{
+					"slide":[
+						{
+							"active":true,
+							"duration": 1000,
+							"direction": "horizontal",
+							"easingCurve": "Linear"
+						}
+					]
+				}
+			]
+		},
+    {
+			"name":"form_stack",
+			"navigation":[
+				{
+					"navigationButtons":[
+						{
+							"to_signup": "signup_pg",
+							"to_login": "login_pg",
+							"rest": "Rest_pwd"
+						}
+					]
+				}
+			],
+      "transitionAnimation":[
+				{
+					"slide":[
+						{
+							"active":true,
+							"duration": 1000,
+							"direction": "vertical",
+							"easingCurve": "Linear"
+						}
+					]
+				}
+			]
+		}
+	],
+	"QCustomCheckBox":[
+		{
+			"name":"checkBox",
+			"bgColor":"#B7B7B7",
+			"circleColor":"#008080",
+			"activeColor":"#99CCCC",
+			"animationEasingCurve":"Linear",
+			"animationDuration":1000
+		}
+	],
+	"QCustomSlideMenu": [
+		{
+				"name": "notificationSlide",
+				"defaultSize": [
+						{
+								"width": 800,
+								"height": 40
+						}
+				],
+				"collapsedSize": [
+						{
+								"width": 800,
+								"height": 0
+						}
+				],
+				"expandedSize": [
+						{
+								"width": 800,
+								"height": "auto"
+						}
+				],
+				"toggleButton": [
+						{
+								"buttonName": "closeNotification"
+						}
+				],
+				"menuTransitionAnimation": [
+						{
+								"animationDuration": 500,
+								"animationEasingCurve": "Linear"
+						}
+				]
+		}
+]
+}

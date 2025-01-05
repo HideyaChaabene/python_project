@@ -1,0 +1,144 @@
+{
+  "QPushButton": [
+    {
+      "name": "closeNotification",
+      "icon": "Qss/icons/icons/feather/check.png"
+    },
+    {
+      "name": "close_window_button",
+      "icon": "Qss/icons/icons/feather/x-circle.png"
+    },
+    {
+      "name": "google",
+      "icon": "Qss/icons/icons/font_awesome/brands/google-plus-g.png"
+    },
+    {
+      "name": "facebook",
+      "icon": "Qss/icons/icons/font_awesome/brands/facebook-f.png"
+    },
+    {
+      "name": "twitter",
+      "icon": "Qss/icons/icons/font_awesome/brands/square-x-twitter.png"
+    },
+    {
+      "name": "github",
+      "icon": "Qss/icons/icons/font_awesome/brands/github.png"
+    },
+    {
+      "name": "google_2",
+      "icon": "Qss/icons/icons/font_awesome/brands/google-plus-g.png"
+    },
+    {
+      "name": "facebook_2",
+      "icon": "Qss/icons/icons/font_awesome/brands/facebook-f.png"
+    },
+    {
+      "name": "twitter_2",
+      "icon": "Qss/icons/icons/font_awesome/brands/square-x-twitter.png"
+    },
+    {
+      "name": "github_2",
+      "icon": "Qss/icons/icons/font_awesome/brands/github.png"
+    },
+    {
+      "name": "pushButton_4",
+      "icon": "Qss/icons/icons/font_awesome/brands/battle-net.png"
+    },
+    {
+      "name": "to_packet_2",
+      "icon": "Qss/icons/icons/feather/cast.png"
+    },
+    {
+      "name": "to_menace_2",
+      "icon": "Qss/icons/icons/feather/alert-octagon.png"
+    },
+    {
+      "name": "to_profil_2",
+      "icon": "Qss/icons/icons/feather/user.png"
+    },
+    {
+      "name": "to_alert_2",
+      "icon": "Qss/icons/icons/feather/bell.png"
+    },
+    {
+      "name": "to_visual_2",
+      "icon": "Qss/icons/icons/font_awesome/brands/trello.png"
+    },
+    {
+      "name": "Setting_2",
+      "icon": "Qss/icons/icons/feather/settings.png"
+    },
+    {
+      "name": "logout_2",
+      "icon": "Qss/icons/icons/feather/power.png"
+    },
+    {
+      "name": "to_packet",
+      "icon": "Qss/icons/icons/feather/cast.png"
+    },
+    {
+      "name": "to_menace",
+      "icon": "Qss/icons/icons/feather/alert-octagon.png"
+    },
+    {
+      "name": "to_profil",
+      "icon": "Qss/icons/icons/feather/user.png"
+    },
+    {
+      "name": "to_alert",
+      "icon": "Qss/icons/icons/feather/bell.png"
+    },
+    {
+      "name": "to_visual",
+      "icon": "Qss/icons/icons/font_awesome/brands/trello.png"
+    },
+    {
+      "name": "Setting",
+      "icon": "Qss/icons/icons/feather/settings.png"
+    },
+    {
+      "name": "logout",
+      "icon": "Qss/icons/icons/feather/power.png"
+    },
+    {
+      "name": "menuBtn_3",
+      "icon": "Qss/icons/icons/feather/menu.png"
+    },
+    {
+      "name": "to_capture",
+      "icon": "Qss/icons/icons/feather/package.png"
+    },
+    {
+      "name": "to_filtrer",
+      "icon": "Qss/icons/icons/feather/filter.png"
+    },
+    {
+      "name": "editbtn",
+      "icon": "Qss/icons/icons/material_design/edit.png"
+    },
+    {
+      "name": "deletbtn",
+      "icon": "Qss/icons/icons/material_design/restore_from_trash.png"
+    },
+    {
+      "name": "pushButton_2",
+      "icon": "Qss/icons/icons/material_design/edit.png"
+    }
+  ],
+  "QCustomCheckBox": [
+    {
+      "name": "checkBox_2",
+      "icon": "Qss/icons/icons/font_awesome/solid/palette.png"
+    }
+  ],
+  "QLabel": [
+    {
+      "name": "label_11",
+      "pixmap": "Qss/icons/icons/feather/search.png"
+    },
+    {
+      "name": "label_17",
+      "pixmap": "Qss/icons/icons/feather/user.png"
+    }
+  ]
+}
