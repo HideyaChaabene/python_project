@@ -17,9 +17,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QDateEdit, QFrame,
     QHBoxLayout, QHeaderView, QLabel, QLineEdit,
-    QListWidget, QListWidgetItem, QMainWindow, QPushButton,
-    QScrollArea, QSizePolicy, QSpacerItem, QStackedWidget,
-    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
+    QMainWindow, QPushButton, QScrollArea, QSizePolicy,
+    QSpacerItem, QStackedWidget, QTableWidget, QTableWidgetItem,
+    QVBoxLayout, QWidget)
 
 from Custom_Widgets.QCustomCheckBox import QCustomCheckBox
 from Custom_Widgets.QCustomQStackedWidget import QCustomQStackedWidget
@@ -1292,17 +1292,44 @@ class Ui_MainWindow(object):
         self.alert.setObjectName(u"alert")
         self.verticalLayout_41 = QVBoxLayout(self.alert)
         self.verticalLayout_41.setObjectName(u"verticalLayout_41")
-        self.alert_list = QListWidget(self.alert)
-        self.alert_list.setObjectName(u"alert_list")
+        self.tableWidget_4 = QTableWidget(self.alert)
+        self.tableWidget_4.setObjectName(u"tableWidget_4")
 
-        self.verticalLayout_41.addWidget(self.alert_list)
+        self.verticalLayout_41.addWidget(self.tableWidget_4)
 
         self.pages_screen.addWidget(self.alert)
         self.menace = QWidget()
         self.menace.setObjectName(u"menace")
-        self.widget_3 = QWidget(self.menace)
-        self.widget_3.setObjectName(u"widget_3")
-        self.widget_3.setGeometry(QRect(180, 260, 120, 80))
+        self.verticalLayout_42 = QVBoxLayout(self.menace)
+        self.verticalLayout_42.setObjectName(u"verticalLayout_42")
+        self.menace_table = QTableWidget(self.menace)
+        if (self.menace_table.columnCount() < 10):
+            self.menace_table.setColumnCount(10)
+        __qtablewidgetitem20 = QTableWidgetItem()
+        self.menace_table.setHorizontalHeaderItem(0, __qtablewidgetitem20)
+        __qtablewidgetitem21 = QTableWidgetItem()
+        self.menace_table.setHorizontalHeaderItem(1, __qtablewidgetitem21)
+        __qtablewidgetitem22 = QTableWidgetItem()
+        self.menace_table.setHorizontalHeaderItem(2, __qtablewidgetitem22)
+        __qtablewidgetitem23 = QTableWidgetItem()
+        self.menace_table.setHorizontalHeaderItem(3, __qtablewidgetitem23)
+        __qtablewidgetitem24 = QTableWidgetItem()
+        self.menace_table.setHorizontalHeaderItem(4, __qtablewidgetitem24)
+        __qtablewidgetitem25 = QTableWidgetItem()
+        self.menace_table.setHorizontalHeaderItem(5, __qtablewidgetitem25)
+        __qtablewidgetitem26 = QTableWidgetItem()
+        self.menace_table.setHorizontalHeaderItem(6, __qtablewidgetitem26)
+        __qtablewidgetitem27 = QTableWidgetItem()
+        self.menace_table.setHorizontalHeaderItem(7, __qtablewidgetitem27)
+        __qtablewidgetitem28 = QTableWidgetItem()
+        self.menace_table.setHorizontalHeaderItem(8, __qtablewidgetitem28)
+        __qtablewidgetitem29 = QTableWidgetItem()
+        self.menace_table.setHorizontalHeaderItem(9, __qtablewidgetitem29)
+        self.menace_table.setObjectName(u"menace_table")
+        self.menace_table.setContextMenuPolicy(Qt.CustomContextMenu)
+
+        self.verticalLayout_42.addWidget(self.menace_table)
+
         self.pages_screen.addWidget(self.menace)
         self.profil = QWidget()
         self.profil.setObjectName(u"profil")
@@ -1385,7 +1412,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 317, 622))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 716, 622))
         self.verticalLayout_29 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_29.setObjectName(u"verticalLayout_29")
         self.frame_25 = QFrame(self.scrollAreaWidgetContents)
@@ -1558,9 +1585,114 @@ class Ui_MainWindow(object):
         self.pages_screen.addWidget(self.profil)
         self.visual = QWidget()
         self.visual.setObjectName(u"visual")
-        self.label_18 = QLabel(self.visual)
-        self.label_18.setObjectName(u"label_18")
-        self.label_18.setGeometry(QRect(450, 300, 55, 16))
+        self.verticalLayout_43 = QVBoxLayout(self.visual)
+        self.verticalLayout_43.setObjectName(u"verticalLayout_43")
+        self.frame_32 = QFrame(self.visual)
+        self.frame_32.setObjectName(u"frame_32")
+        self.frame_32.setFrameShape(QFrame.StyledPanel)
+        self.frame_32.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_44 = QVBoxLayout(self.frame_32)
+        self.verticalLayout_44.setObjectName(u"verticalLayout_44")
+        self.frame_24 = QFrame(self.frame_32)
+        self.frame_24.setObjectName(u"frame_24")
+        self.frame_24.setStyleSheet(u"background-color : transparent;\n"
+"")
+        self.frame_24.setFrameShape(QFrame.StyledPanel)
+        self.frame_24.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_29 = QHBoxLayout(self.frame_24)
+        self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
+        self.black_list = QPushButton(self.frame_24)
+        self.black_list.setObjectName(u"black_list")
+        self.black_list.setMinimumSize(QSize(150, 40))
+        self.black_list.setStyleSheet(u"border-radius:10px;\n"
+"border: 1px solid #008080;\n"
+"background-color: #008080;\n"
+"color: #ffffff;")
+        self.black_list.setCheckable(True)
+
+        self.horizontalLayout_29.addWidget(self.black_list)
+
+        self.white_list = QPushButton(self.frame_24)
+        self.white_list.setObjectName(u"white_list")
+        self.white_list.setMinimumSize(QSize(150, 40))
+        self.white_list.setStyleSheet(u"border-radius:10px;\n"
+"border: 1px solid #008080;\n"
+"background-color: #008080;\n"
+"color: #ffffff;")
+        self.white_list.setCheckable(True)
+
+        self.horizontalLayout_29.addWidget(self.white_list)
+
+        self.dns_list = QPushButton(self.frame_24)
+        self.dns_list.setObjectName(u"dns_list")
+        self.dns_list.setMinimumSize(QSize(150, 40))
+        self.dns_list.setStyleSheet(u"border-radius:10px;\n"
+"border: 1px solid #008080;\n"
+"background-color: #008080;\n"
+"color: #ffffff;")
+        self.dns_list.setCheckable(True)
+
+        self.horizontalLayout_29.addWidget(self.dns_list)
+
+
+        self.verticalLayout_44.addWidget(self.frame_24)
+
+        self.listes = QStackedWidget(self.frame_32)
+        self.listes.setObjectName(u"listes")
+        self.black = QWidget()
+        self.black.setObjectName(u"black")
+        self.horizontalLayout_30 = QHBoxLayout(self.black)
+        self.horizontalLayout_30.setObjectName(u"horizontalLayout_30")
+        self.black_table = QTableWidget(self.black)
+        if (self.black_table.columnCount() < 2):
+            self.black_table.setColumnCount(2)
+        __qtablewidgetitem30 = QTableWidgetItem()
+        self.black_table.setHorizontalHeaderItem(0, __qtablewidgetitem30)
+        __qtablewidgetitem31 = QTableWidgetItem()
+        self.black_table.setHorizontalHeaderItem(1, __qtablewidgetitem31)
+        self.black_table.setObjectName(u"black_table")
+
+        self.horizontalLayout_30.addWidget(self.black_table)
+
+        self.listes.addWidget(self.black)
+        self.white = QWidget()
+        self.white.setObjectName(u"white")
+        self.verticalLayout_45 = QVBoxLayout(self.white)
+        self.verticalLayout_45.setObjectName(u"verticalLayout_45")
+        self.white_table = QTableWidget(self.white)
+        if (self.white_table.columnCount() < 2):
+            self.white_table.setColumnCount(2)
+        __qtablewidgetitem32 = QTableWidgetItem()
+        self.white_table.setHorizontalHeaderItem(0, __qtablewidgetitem32)
+        __qtablewidgetitem33 = QTableWidgetItem()
+        self.white_table.setHorizontalHeaderItem(1, __qtablewidgetitem33)
+        self.white_table.setObjectName(u"white_table")
+
+        self.verticalLayout_45.addWidget(self.white_table)
+
+        self.listes.addWidget(self.white)
+        self.dns = QWidget()
+        self.dns.setObjectName(u"dns")
+        self.verticalLayout_46 = QVBoxLayout(self.dns)
+        self.verticalLayout_46.setObjectName(u"verticalLayout_46")
+        self.dns_table = QTableWidget(self.dns)
+        if (self.dns_table.columnCount() < 2):
+            self.dns_table.setColumnCount(2)
+        __qtablewidgetitem34 = QTableWidgetItem()
+        self.dns_table.setHorizontalHeaderItem(0, __qtablewidgetitem34)
+        __qtablewidgetitem35 = QTableWidgetItem()
+        self.dns_table.setHorizontalHeaderItem(1, __qtablewidgetitem35)
+        self.dns_table.setObjectName(u"dns_table")
+
+        self.verticalLayout_46.addWidget(self.dns_table)
+
+        self.listes.addWidget(self.dns)
+
+        self.verticalLayout_44.addWidget(self.listes)
+
+
+        self.verticalLayout_43.addWidget(self.frame_32)
+
         self.pages_screen.addWidget(self.visual)
 
         self.horizontalLayout_9.addWidget(self.pages_screen)
@@ -1584,12 +1716,13 @@ class Ui_MainWindow(object):
         self.menuBtn_3.toggled.connect(self.icon_only_widget.setVisible)
         self.menuBtn_3.toggled.connect(self.icon_text_widget_3.setHidden)
 
-        self.globale_screen.setCurrentIndex(1)
+        self.globale_screen.setCurrentIndex(0)
         self.index_stack.setCurrentIndex(0)
         self.form_stack.setCurrentIndex(0)
         self.pages_screen.setCurrentIndex(0)
         self.packets.setCurrentIndex(0)
         self.profil_edit.setCurrentIndex(0)
+        self.listes.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1716,6 +1849,26 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem18.setText(QCoreApplication.translate("MainWindow", u"Destination Port", None));
         ___qtablewidgetitem19 = self.tableWidget_2.horizontalHeaderItem(9)
         ___qtablewidgetitem19.setText(QCoreApplication.translate("MainWindow", u"Packet Type ", None));
+        ___qtablewidgetitem20 = self.menace_table.horizontalHeaderItem(0)
+        ___qtablewidgetitem20.setText(QCoreApplication.translate("MainWindow", u"TIME", None));
+        ___qtablewidgetitem21 = self.menace_table.horizontalHeaderItem(1)
+        ___qtablewidgetitem21.setText(QCoreApplication.translate("MainWindow", u"Source MAC", None));
+        ___qtablewidgetitem22 = self.menace_table.horizontalHeaderItem(2)
+        ___qtablewidgetitem22.setText(QCoreApplication.translate("MainWindow", u"Destination MAC", None));
+        ___qtablewidgetitem23 = self.menace_table.horizontalHeaderItem(3)
+        ___qtablewidgetitem23.setText(QCoreApplication.translate("MainWindow", u"Source IP", None));
+        ___qtablewidgetitem24 = self.menace_table.horizontalHeaderItem(4)
+        ___qtablewidgetitem24.setText(QCoreApplication.translate("MainWindow", u"Destination IP", None));
+        ___qtablewidgetitem25 = self.menace_table.horizontalHeaderItem(5)
+        ___qtablewidgetitem25.setText(QCoreApplication.translate("MainWindow", u"Protocol", None));
+        ___qtablewidgetitem26 = self.menace_table.horizontalHeaderItem(6)
+        ___qtablewidgetitem26.setText(QCoreApplication.translate("MainWindow", u"Length", None));
+        ___qtablewidgetitem27 = self.menace_table.horizontalHeaderItem(7)
+        ___qtablewidgetitem27.setText(QCoreApplication.translate("MainWindow", u"Source Port", None));
+        ___qtablewidgetitem28 = self.menace_table.horizontalHeaderItem(8)
+        ___qtablewidgetitem28.setText(QCoreApplication.translate("MainWindow", u"Destination Port", None));
+        ___qtablewidgetitem29 = self.menace_table.horizontalHeaderItem(9)
+        ___qtablewidgetitem29.setText(QCoreApplication.translate("MainWindow", u"Packet Type ", None));
         self.editbtn.setText(QCoreApplication.translate("MainWindow", u"Modifier Profil", None))
         self.deletbtn.setText(QCoreApplication.translate("MainWindow", u"Supprimer Compte", None))
         self.label_17.setText("")
@@ -1731,6 +1884,20 @@ class Ui_MainWindow(object):
         self.lineEdit_4.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Password", None))
         self.lineEdit_11.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Confirme Password", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Supprimer Conmpte", None))
-        self.label_18.setText(QCoreApplication.translate("MainWindow", u"visual", None))
+        self.black_list.setText(QCoreApplication.translate("MainWindow", u"Black Liste", None))
+        self.white_list.setText(QCoreApplication.translate("MainWindow", u"White Liste", None))
+        self.dns_list.setText(QCoreApplication.translate("MainWindow", u"DNS Liste", None))
+        ___qtablewidgetitem30 = self.black_table.horizontalHeaderItem(0)
+        ___qtablewidgetitem30.setText(QCoreApplication.translate("MainWindow", u"IP Adresse", None));
+        ___qtablewidgetitem31 = self.black_table.horizontalHeaderItem(1)
+        ___qtablewidgetitem31.setText(QCoreApplication.translate("MainWindow", u"black", None));
+        ___qtablewidgetitem32 = self.white_table.horizontalHeaderItem(0)
+        ___qtablewidgetitem32.setText(QCoreApplication.translate("MainWindow", u"IP Adresse", None));
+        ___qtablewidgetitem33 = self.white_table.horizontalHeaderItem(1)
+        ___qtablewidgetitem33.setText(QCoreApplication.translate("MainWindow", u"white", None));
+        ___qtablewidgetitem34 = self.dns_table.horizontalHeaderItem(0)
+        ___qtablewidgetitem34.setText(QCoreApplication.translate("MainWindow", u"IP Adresse", None));
+        ___qtablewidgetitem35 = self.dns_table.horizontalHeaderItem(1)
+        ___qtablewidgetitem35.setText(QCoreApplication.translate("MainWindow", u"dns", None));
     # retranslateUi
 

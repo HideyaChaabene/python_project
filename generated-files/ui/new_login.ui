@@ -75,7 +75,7 @@
           </size>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="login">
           <property name="minimumSize">
@@ -2837,21 +2837,70 @@ color: #ffffff;</string>
                    <widget class="QWidget" name="alert">
                     <layout class="QVBoxLayout" name="verticalLayout_41">
                      <item>
-                      <widget class="QListWidget" name="alert_list" />
+                      <widget class="QTableWidget" name="tableWidget_4" />
                      </item>
                     </layout>
                    </widget>
                    <widget class="QWidget" name="menace">
-                    <widget class="QWidget" name="widget_3" native="true">
-                     <property name="geometry">
-                      <rect>
-                       <x>180</x>
-                       <y>260</y>
-                       <width>120</width>
-                       <height>80</height>
-                      </rect>
-                     </property>
-                    </widget>
+                    <layout class="QVBoxLayout" name="verticalLayout_42">
+                     <item>
+                      <widget class="QTableWidget" name="menace_table">
+                       <property name="contextMenuPolicy">
+                        <enum>Qt::CustomContextMenu</enum>
+                       </property>
+                       <column>
+                        <property name="text">
+                         <string>TIME</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Source MAC</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Destination MAC</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Source IP</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Destination IP</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Protocol</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Length</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Source Port</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Destination Port</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Packet Type </string>
+                        </property>
+                       </column>
+                      </widget>
+                     </item>
+                    </layout>
                    </widget>
                    <widget class="QWidget" name="profil">
                     <layout class="QVBoxLayout" name="verticalLayout_30">
@@ -3029,7 +3078,7 @@ border: 1px  solid #008080;</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>317</width>
+                                 <width>716</width>
                                  <height>622</height>
                                 </rect>
                                </property>
@@ -3423,19 +3472,163 @@ color: #ffffff;</string>
                     </layout>
                    </widget>
                    <widget class="QWidget" name="visual">
-                    <widget class="QLabel" name="label_18">
-                     <property name="geometry">
-                      <rect>
-                       <x>450</x>
-                       <y>300</y>
-                       <width>55</width>
-                       <height>16</height>
-                      </rect>
-                     </property>
-                     <property name="text">
-                      <string>visual</string>
-                     </property>
-                    </widget>
+                    <layout class="QVBoxLayout" name="verticalLayout_43">
+                     <item>
+                      <widget class="QFrame" name="frame_32">
+                       <property name="frameShape">
+                        <enum>QFrame::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Raised</enum>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_44">
+                        <item>
+                         <widget class="QFrame" name="frame_24">
+                          <property name="styleSheet">
+                           <string notr="true">background-color : transparent;
+</string>
+                          </property>
+                          <property name="frameShape">
+                           <enum>QFrame::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Raised</enum>
+                          </property>
+                          <layout class="QHBoxLayout" name="horizontalLayout_29">
+                           <item>
+                            <widget class="QPushButton" name="black_list">
+                             <property name="minimumSize">
+                              <size>
+                               <width>150</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border-radius:10px;
+border: 1px solid #008080;
+background-color: #008080;
+color: #ffffff;</string>
+                             </property>
+                             <property name="text">
+                              <string>Black Liste</string>
+                             </property>
+                             <property name="checkable">
+                              <bool>true</bool>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="white_list">
+                             <property name="minimumSize">
+                              <size>
+                               <width>150</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border-radius:10px;
+border: 1px solid #008080;
+background-color: #008080;
+color: #ffffff;</string>
+                             </property>
+                             <property name="text">
+                              <string>White Liste</string>
+                             </property>
+                             <property name="checkable">
+                              <bool>true</bool>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QPushButton" name="dns_list">
+                             <property name="minimumSize">
+                              <size>
+                               <width>150</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">border-radius:10px;
+border: 1px solid #008080;
+background-color: #008080;
+color: #ffffff;</string>
+                             </property>
+                             <property name="text">
+                              <string>DNS Liste</string>
+                             </property>
+                             <property name="checkable">
+                              <bool>true</bool>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QStackedWidget" name="listes">
+                          <property name="currentIndex">
+                           <number>0</number>
+                          </property>
+                          <widget class="QWidget" name="black">
+                           <layout class="QHBoxLayout" name="horizontalLayout_30">
+                            <item>
+                             <widget class="QTableWidget" name="black_table">
+                              <column>
+                               <property name="text">
+                                <string>IP Adresse</string>
+                               </property>
+                              </column>
+                              <column>
+                               <property name="text">
+                                <string>black</string>
+                               </property>
+                              </column>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                          <widget class="QWidget" name="white">
+                           <layout class="QVBoxLayout" name="verticalLayout_45">
+                            <item>
+                             <widget class="QTableWidget" name="white_table">
+                              <column>
+                               <property name="text">
+                                <string>IP Adresse</string>
+                               </property>
+                              </column>
+                              <column>
+                               <property name="text">
+                                <string>white</string>
+                               </property>
+                              </column>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                          <widget class="QWidget" name="dns">
+                           <layout class="QVBoxLayout" name="verticalLayout_46">
+                            <item>
+                             <widget class="QTableWidget" name="dns_table">
+                              <column>
+                               <property name="text">
+                                <string>IP Adresse</string>
+                               </property>
+                              </column>
+                              <column>
+                               <property name="text">
+                                <string>dns</string>
+                               </property>
+                              </column>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
                    </widget>
                   </widget>
                  </item>

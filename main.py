@@ -20,6 +20,8 @@ from Custom_Widgets import *
 from Custom_Widgets.QAppSettings import QAppSettings
 
 from PySide6.QtWidgets import QMessageBox
+from PySide6.QtWidgets import QPushButton, QHBoxLayout, QWidget
+from PySide6.QtWidgets import QMenu
 ################################################################################################
 
 
@@ -117,9 +119,14 @@ class MainWindow(QMainWindow):
     self.ui.logout.clicked.connect(self.logout)
     self.ui.logout_2.clicked.connect(self.logout)
 
+    self.ui.menace_table.setContextMenuPolicy(Qt.CustomContextMenu)
+    self.ui.menace_table.customContextMenuRequested.connect(self.show_context_menu)
     
-
-  
+    
+    #menace button 
+    self.ui.black_list.clicked.connect(partial(self.nav_menace_page,"black"))
+    self.ui.white_list.clicked.connect(partial(self.nav_menace_page,"white"))
+    self.ui.dns_list.clicked.connect(partial(self.nav_menace_page,"dns"))  
   #Function to display notification
   def showNotif(self, msg):
     self.ui.notificationTxt.setText(msg)
@@ -379,7 +386,72 @@ class MainWindow(QMainWindow):
         print(f"Navigation vers la page '{page_name}' réussie.")
     except Exception as e:
         print(f"Une erreur est survenue lors de la navigation : {e}")
-    
+  def nav_menace_page(self, page_name: str):
+    """
+    Naviguer vers une page spécifique à l'intérieur du QStackedWidget imbriqué "packets".
+    :param page_name: Nom de l'objet QWidget correspondant à la page dans Qt Designer.
+    """
+    print(f"Appel de nav_packet_page avec page_name = {page_name}")  # Message de débogage
+    try:
+        # Accéder au QStackedWidget principal (globale_screen)
+        globale_screen = self.ui.globale_screen
+        if not globale_screen:
+            print("Erreur : Le QStackedWidget 'globale_screen' est introuvable.")
+            return
+
+        # Accéder à la page d'accueil (acceuil)
+        acceuil_page = globale_screen.findChild(QWidget, "acceuil")
+        if not acceuil_page:
+            print("Erreur : La page 'acceuil' est introuvable.")
+            return
+
+        # Accéder au QFrame "screen" de la page "acceuil"
+        screen_frame = acceuil_page.findChild(QFrame, "screen")
+        if not screen_frame:
+            print("Erreur : Le QFrame 'screen' est introuvable.")
+            return
+
+        # Accéder au QWidget "main_screen" de la page "acceuil"
+        main_screen = screen_frame.findChild(QWidget, "main_screen")
+        if not main_screen:
+            print("Erreur : Le QWidget 'main_screen' est introuvable.")
+            return
+
+        # Accéder au QStackedWidget des pages ("pages_screen")
+        pages_screen = main_screen.findChild(QStackedWidget, "pages_screen")
+        if not pages_screen:
+            print("Erreur : Le QStackedWidget 'pages_screen' est introuvable.")
+            return
+
+        # Accéder à la page "packet"
+        visual = pages_screen.findChild(QWidget, "visual")
+        if not visual:
+            print("Erreur : Le QWidget 'visual' est introuvable.")
+            return
+
+        # Accéder au QWidget "frame_16" de la page "packet"
+        frame_32 = visual.findChild(QWidget, "frame_32")
+        if not frame_32:
+            print("Erreur : Le QWidget 'frame_32' est introuvable.")
+            return
+
+        # Accéder au QStackedWidget des pages ("packets")
+        listes = frame_32.findChild(QStackedWidget, "listes")
+        if not listes:
+            print("Erreur : Le QStackedWidget 'listes' est introuvable.")
+            return
+
+        # Récupérer la page cible
+        target_page = listes.findChild(QWidget, page_name)  # Utilise packets ici
+        if not target_page:
+            print(f"Erreur : La page '{page_name}' est introuvable dans 'packets'.")
+            return
+
+        # Naviguer vers la page cible
+        listes.setCurrentWidget(target_page)  # Utilise packets ici
+        print(f"Navigation vers la page '{page_name}' réussie.")
+    except Exception as e:
+        print(f"Une erreur est survenue lors de la navigation : {e}") 
   def nav_profil_page(self, page_name: str):
     """
     Naviguer vers une page spécifique à l'intérieur du QStackedWidget imbriqué "packets".
@@ -574,6 +646,7 @@ class MainWindow(QMainWindow):
         def packet_callback(packet):
             if not self.sniffing:
                 return  # Arrêter le sniffing si self.sniffing est False
+            self.Ajout_menace(packet)
             self.captured_packets.append(packet)
             self.display_packet(packet)
 
@@ -804,6 +877,231 @@ class MainWindow(QMainWindow):
         if source_ip.startswith("192.168.1.100") or dest_ip.startswith("192.168.1.100"):
             return True
     return False
+
+##################################################################" MENACE ###############################################################################################################"
+  def is_suspicious_packet(self, packet):
+    """
+    Vérifie si un paquet est suspect en utilisant des critères génériques.
+    :param packet: Le paquet à analyser.
+    :return: True si le paquet est suspect, False sinon.
+    """
+    try:
+        # 1. Vérifier la taille du paquet
+        packet_length = len(packet)
+        if packet_length > 1500:  # Taille maximale typique pour un paquet Ethernet
+            return True  # Paquet trop grand, potentiellement suspect
+
+        # 2. Vérifier les paquets avec des adresses MAC invalides
+        if Ether in packet:
+            source_mac = packet[Ether].src
+            dest_mac = packet[Ether].dst
+            if source_mac == "00:00:00:00:00:00" or dest_mac == "00:00:00:00:00:00":
+                return True  # Adresse MAC invalide
+
+        # 3. Vérifier les paquets avec des adresses IP invalides
+        if IP in packet:
+            source_ip = packet[IP].src
+            dest_ip = packet[IP].dst
+            if source_ip == "0.0.0.0" or dest_ip == "0.0.0.0":
+                return True  # Adresse IP invalide
+
+        # 4. Vérifier les paquets ICMP (ping flood, etc.)
+        if ICMP in packet:
+            if packet_length > 1000:  # Paquets ICMP volumineux
+                return True
+
+        # 5. Vérifier les paquets ARP (ARP spoofing)
+        if ARP in packet:
+            if packet[ARP].op not in [1, 2]:  # Opérations ARP normales : 1 (requête), 2 (réponse)
+                return True  # Opération ARP inhabituelle
+
+        # 6. Vérifier les paquets DNS (requêtes suspectes)
+        if DNS in packet:
+            if hasattr(packet[DNS], "qd") and packet[DNS].qd:
+                domain = packet[DNS].qd.qname.decode("utf-8").rstrip(".")
+                if len(domain) > 50:  # Nom de domaine trop long
+                    return True
+
+        # 7. Vérifier les paquets avec des flags TCP inhabituels
+        if TCP in packet:
+            flags = packet[TCP].flags
+            if flags not in ["S", "SA", "A", "PA", "FA", "R"]:  # Flags TCP normaux
+                return True  # Flags TCP inhabituels
+
+        # 8. Vérifier les paquets UDP avec une charge utile inhabituelle
+        if UDP in packet:
+            if packet_length > 512:  # Paquets UDP volumineux
+                return True
+
+        # 9. Vérifier les paquets IPv6 (tunneling suspect)
+        if IPv6 in packet:
+            if packet_length > 1500:  # Paquets IPv6 volumineux
+                return True
+
+        # Si aucun critère suspect n'est détecté, le paquet est considéré comme normal
+        return False
+
+    except Exception as e:
+        # En cas d'erreur lors de l'analyse, considérer le paquet comme suspect par précaution
+        logging.error(f"Erreur lors de l'analyse du paquet : {e}")
+        return True
+
+  def Ajout_menace(self, packet):
+    """
+    Ajoute un paquet suspect dans le tableau menace_table.
+    :param packet: Le paquet à ajouter.
+    """
+    try:
+        # Vérifier si le paquet est suspect
+        if self.is_suspicious_packet(packet):
+            # Ajouter le paquet dans le tableau menace_table
+            row_position = self.ui.menace_table.rowCount()
+            self.ui.menace_table.insertRow(row_position)
+
+            # Extraire les informations du paquet
+            timestamp = packet.time
+            source_mac = packet.src if Ether in packet else ""
+            dest_mac = packet.dst if Ether in packet else ""
+            source_ip = packet[IP].src if IP in packet else ""
+            dest_ip = packet[IP].dst if IP in packet else ""
+            protocol = packet.proto if IP in packet else ""
+            length = len(packet)
+
+            # Déterminer le type du paquet et les ports si présents
+            packet_type = ""
+            source_port = ""
+            dest_port = ""
+
+            if TCP in packet:
+                packet_type = "TCP"
+                source_port = packet[TCP].sport
+                dest_port = packet[TCP].dport
+            elif UDP in packet:
+                packet_type = "UDP"
+                source_port = packet[UDP].sport
+                dest_port = packet[UDP].dport
+            elif ICMP in packet:
+                packet_type = "ICMP"
+            elif ARP in packet:
+                packet_type = "ARP"
+            elif DNS in packet:
+                packet_type = "DNS"
+            elif DHCP in packet:
+                packet_type = "DHCP"
+            elif IPv6 in packet:
+                packet_type = "IPv6"
+            elif IP in packet:
+                packet_type = "IP"
+
+            # Ajouter les informations dans les cellules du tableau
+            self.ui.menace_table.setItem(row_position, 0, QTableWidgetItem(str(timestamp)))  # Timestamp
+            self.ui.menace_table.setItem(row_position, 1, QTableWidgetItem(source_mac))  # Source MAC
+            self.ui.menace_table.setItem(row_position, 2, QTableWidgetItem(dest_mac))  # Destination MAC
+            self.ui.menace_table.setItem(row_position, 3, QTableWidgetItem(source_ip))  # Source IP
+            self.ui.menace_table.setItem(row_position, 4, QTableWidgetItem(dest_ip))  # Destination IP
+            self.ui.menace_table.setItem(row_position, 5, QTableWidgetItem(str(protocol)))  # Protocol
+            self.ui.menace_table.setItem(row_position, 6, QTableWidgetItem(str(length)))  # Length
+            self.ui.menace_table.setItem(row_position, 7, QTableWidgetItem(str(source_port)))  # Source Port
+            self.ui.menace_table.setItem(row_position, 8, QTableWidgetItem(str(dest_port)))  # Destination Port
+            self.ui.menace_table.setItem(row_position, 9, QTableWidgetItem(packet_type))  # Packet Type
+
+            # Marquer la ligne en rouge pour indiquer une menace
+            for col in range(self.ui.menace_table.columnCount() - 1):  # Ne pas colorer la colonne Action
+                self.ui.menace_table.item(row_position, col).setBackground(Qt.red)
+
+            # Ajouter les boutons dans la colonne "Action"
+            #self.add_action_buttons(row_position)
+
+    except Exception as e:
+        logging.error(f"Erreur lors de l'ajout du paquet dans menace_table : {e}")
+
+  def show_context_menu(self, position):
+    """
+    Affiche un menu contextuel au clic droit sur une ligne du tableau menace_table.
+    """
+    # Récupérer la ligne sélectionnée
+    selected_row = self.ui.menace_table.rowAt(position.y())
+    if selected_row == -1:  # Aucune ligne sélectionnée
+        return
+
+    # Créer un menu contextuel
+    context_menu = QMenu(self)
+
+    # Ajouter les actions au menu
+    action_blacklist = context_menu.addAction("Ajouter à la blackliste")
+    action_whitelist = context_menu.addAction("Ajouter à la whiteliste")
+    action_dns_list = context_menu.addAction("Ajouter à la DNS liste")
+
+    # Connecter les actions aux fonctions correspondantes
+    action_blacklist.triggered.connect(lambda: self.add_to_blacklist(selected_row))
+    
+    action_whitelist.triggered.connect(lambda: self.add_to_whitelist(selected_row))
+    action_dns_list.triggered.connect(lambda: self.add_to_dns_list(selected_row))
+    
+
+    # Afficher le menu contextuel à la position du clic
+    context_menu.exec_(self.ui.menace_table.viewport().mapToGlobal(position))
+  
+  def add_to_blacklist(self, row):
+    """
+    Ajoute l'adresse IP de la ligne sélectionnée à la blackliste.
+    """
+    ip_address = self.ui.menace_table.item(row, 3).text()  # Récupérer l'adresse IP
+
+    # Naviguer vers la page "black" dans le stackedWidget "listes"
+    self.ui.listes.setCurrentWidget(self.ui.black)
+
+    # Ajouter l'adresse IP dans black_table
+    self.add_to_table(self.ui.black_table, ip_address)
+
+    # Afficher un message de confirmation
+    self.show_message("Blackliste", f"Adresse IP {ip_address} ajoutée à la blackliste.")
+
+  def add_to_whitelist(self, row):
+    """
+    Ajoute l'adresse IP de la ligne sélectionnée à la whiteliste.
+    """
+    ip_address = self.ui.menace_table.item(row, 3).text()  # Récupérer l'adresse IP
+
+    # Naviguer vers la page "white" dans le stackedWidget "listes"
+    self.ui.listes.setCurrentWidget(self.ui.white)
+
+    # Ajouter l'adresse IP dans white_table
+    self.add_to_table(self.ui.white_table, ip_address)
+
+    # Afficher un message de confirmation
+    self.show_message("Whiteliste", f"Adresse IP {ip_address} ajoutée à la whiteliste.")
+
+  def add_to_dns_list(self, row):
+    """
+    Ajoute le domaine de la ligne sélectionnée à la DNS liste.
+    """
+    domain = self.ui.menace_table.item(row, 9).text()  # Récupérer le domaine
+
+    # Naviguer vers la page "dns" dans le stackedWidget "listes"
+    self.ui.listes.setCurrentWidget(self.ui.dns)
+
+    # Ajouter le domaine dans dns_table
+    self.add_to_table(self.ui.dns_table, domain)
+
+    # Afficher un message de confirmation
+    self.show_message("DNS Liste", f"Domaine {domain} ajouté à la DNS liste.")
+
+  def add_to_table(self, table, entry):
+    """
+    Ajoute une entrée (adresse IP ou domaine) dans un tableau spécifique.
+    :param table: Le tableau cible (black_table, white_table, dns_table).
+    :param entry: L'entrée à ajouter (adresse IP ou domaine).
+    """
+    # Vérifier si l'entrée existe déjà dans le tableau
+    for row in range(table.rowCount()):
+        if table.item(row, 0).text() == entry:
+            return  # L'entrée existe déjà, ne rien faire
+
+    # Ajouter une nouvelle ligne dans le tableau
+    row_position = table.rowCount()
+    table.insertRow(row_position)
+    table.setItem(row_position, 0, QTableWidgetItem(entry))  # Ajouter l'entrée dans la première colonne
 
 ################################################################################################
 ## Execute App
