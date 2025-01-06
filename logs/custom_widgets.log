@@ -9087,3 +9087,98 @@
 2025-01-06 02:14:18,947 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
 2025-01-06 02:14:19,444 - INFO - Checking icons for qt designer app.
 2025-01-06 02:14:19,922 - INFO - all icons have been checked and missing icons generated!
+2025-01-06 02:51:04,958 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 02:51:05,505 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 02:51:06,071 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 02:51:06,422 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 02:51:06,778 - INFO - Checking icons for qt designer app.
+2025-01-06 02:51:07,141 - INFO - all icons have been checked and missing icons generated!
+2025-01-06 12:51:26,346 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 12:51:27,276 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 12:51:27,949 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 12:51:28,288 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 12:51:28,620 - INFO - Checking icons for qt designer app.
+2025-01-06 12:51:29,176 - INFO - all icons have been checked and missing icons generated!
+2025-01-06 12:52:26,354 - INFO - Successful login attempt for user: chaabenehideya@gmail.com
+2025-01-06 12:54:28,523 - INFO - Successful login attempt for user: chaabenehideya@gmail.com
+2025-01-06 12:56:54,808 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 12:56:55,139 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 12:56:55,435 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 12:56:55,756 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 12:56:56,057 - INFO - Checking icons for qt designer app.
+2025-01-06 12:56:56,349 - INFO - all icons have been checked and missing icons generated!
+2025-01-06 12:58:17,528 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 12:58:17,839 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 12:58:18,146 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 12:58:18,442 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 12:58:18,752 - INFO - Checking icons for qt designer app.
+2025-01-06 12:58:19,050 - INFO - all icons have been checked and missing icons generated!
+2025-01-06 13:05:20,162 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 13:05:20,501 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 13:05:20,828 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 13:05:21,155 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 13:05:21,477 - INFO - Checking icons for qt designer app.
+2025-01-06 13:05:21,802 - INFO - all icons have been checked and missing icons generated!
+2025-01-06 13:06:57,230 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 13:06:57,553 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 13:06:57,867 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 13:06:58,186 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 13:06:58,488 - INFO - Checking icons for qt designer app.
+2025-01-06 13:06:58,786 - INFO - all icons have been checked and missing icons generated!
+2025-01-06 13:07:40,630 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 13:07:40,932 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 13:07:41,222 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 13:07:41,512 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 13:07:41,803 - INFO - Checking icons for qt designer app.
+2025-01-06 13:07:42,093 - INFO - all icons have been checked and missing icons generated!
+2025-01-06 13:09:55,925 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 13:09:56,236 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 13:09:56,535 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 13:09:56,848 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 13:09:57,154 - INFO - Checking icons for qt designer app.
+2025-01-06 13:09:57,452 - INFO - all icons have been checked and missing icons generated!
+2025-01-06 13:10:35,251 - ERROR - Erreur lors du blocage de l'adresse IP 10.10.219.121 : Command 'netsh advfirewall firewall add rule name="Block 10.10.219.121" dir=in action=block remoteip=10.10.219.121' returned non-zero exit status 1.
+2025-01-06 13:11:22,129 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 13:11:22,570 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 13:11:22,949 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 13:11:23,246 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 13:11:23,538 - INFO - Checking icons for qt designer app.
+2025-01-06 13:11:23,834 - INFO - all icons have been checked and missing icons generated!
+2025-01-06 13:19:03,962 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 13:19:04,418 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 13:19:04,871 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 13:19:05,170 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 13:19:05,466 - INFO - Checking icons for qt designer app.
+2025-01-06 13:19:05,906 - INFO - all icons have been checked and missing icons generated!
+2025-01-06 13:25:31,913 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 13:25:32,270 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 13:25:32,569 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 13:25:32,866 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 13:25:33,165 - INFO - Checking icons for qt designer app.
+2025-01-06 13:25:33,470 - INFO - all icons have been checked and missing icons generated!
+2025-01-06 13:29:46,715 - INFO - Successful login attempt for user: chaabenehideya@gmail.com
+2025-01-06 13:41:19,964 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 13:41:21,135 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 13:41:22,172 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 13:41:22,833 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 13:41:23,582 - INFO - Checking icons for qt designer app.
+2025-01-06 13:41:25,269 - INFO - all icons have been checked and missing icons generated!
+2025-01-06 13:42:20,486 - INFO - Successful login attempt for user: chaabenehideya@gmail.com
+2025-01-06 13:47:01,930 - ERROR - Erreur lors du blocage de l'adresse IP 0.0.0.0 : Command 'netsh advfirewall firewall add rule name="Block 0.0.0.0" dir=in action=block remoteip=0.0.0.0' returned non-zero exit status 1.
+2025-01-06 13:47:10,701 - ERROR - Erreur lors du blocage de l'adresse IP 10.10.219.121 : Command 'netsh advfirewall firewall add rule name="Block 10.10.219.121" dir=in action=block remoteip=10.10.219.121' returned non-zero exit status 1.
+2025-01-06 13:47:21,210 - ERROR - Erreur lors du blocage de l'adresse IP 10.10.219.121 : Command 'netsh advfirewall firewall add rule name="Block 10.10.219.121" dir=in action=block remoteip=10.10.219.121' returned non-zero exit status 1.
+2025-01-06 13:47:28,397 - ERROR - Erreur lors du blocage de l'adresse IP  : Command 'netsh advfirewall firewall add rule name="Block " dir=in action=block remoteip=' returned non-zero exit status 1.
+2025-01-06 13:49:49,391 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 13:49:49,821 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 13:49:50,258 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 13:49:50,556 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 13:49:50,847 - INFO - Checking icons for qt designer app.
+2025-01-06 13:49:51,140 - INFO - all icons have been checked and missing icons generated!
+2025-01-06 13:50:44,355 - INFO - Successful login attempt for user: chaabenehideya@gmail.com
+2025-01-06 14:06:37,889 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 14:06:38,923 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 14:06:39,978 - INFO - Checking icons for Modern Teal Slate theme. Icons color: #333333
+2025-01-06 14:06:40,455 - INFO - Checking icons for Midnight Teal Slate theme. Icons color: #F5F5F5
+2025-01-06 14:06:40,847 - INFO - Checking icons for qt designer app.
+2025-01-06 14:06:41,446 - INFO - all icons have been checked and missing icons generated!
+2025-01-06 14:07:01,526 - ERROR - Erreur lors du blocage de l'adresse IP 10.10.229.224 : Command 'netsh advfirewall firewall add rule name="Block 10.10.229.224" dir=in action=block remoteip=10.10.229.224' returned non-zero exit status 1.

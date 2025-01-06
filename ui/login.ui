@@ -1666,6 +1666,9 @@
                            <bold>false</bold>
                           </font>
                          </property>
+                         <property name="toolTip">
+                          <string>hghjjjasq</string>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">padding: 10px 5px; 
 text-align:left;
@@ -2134,7 +2137,7 @@ background-color: transparent;
                  <item>
                   <widget class="QStackedWidget" name="pages_screen">
                    <property name="currentIndex">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <widget class="QWidget" name="packet">
                     <layout class="QVBoxLayout" name="verticalLayout_26">
@@ -2325,7 +2328,7 @@ border: 1px  solid #008080;</string>
                         <item>
                          <widget class="QStackedWidget" name="packets">
                           <property name="currentIndex">
-                           <number>0</number>
+                           <number>1</number>
                           </property>
                           <widget class="QWidget" name="capture">
                            <layout class="QVBoxLayout" name="verticalLayout_25">
@@ -2534,7 +2537,7 @@ color: #ffffff;</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>365</width>
+                                 <width>716</width>
                                  <height>622</height>
                                 </rect>
                                </property>
@@ -3094,7 +3097,7 @@ border: 1px  solid #008080;</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>317</width>
+                                 <width>716</width>
                                  <height>622</height>
                                 </rect>
                                </property>
@@ -3686,6 +3689,7 @@ color: #ffffff;</string>
  <resources>
   <include location="../Qss/icons/_icons.qrc"/>
   <include location="../../python_finale/Qss/icons/recources.qrc"/>
+  <include location="../../../../.designer/Qss/icons/_icons.qrc"/>
  </resources>
  <connections>
   <connection>

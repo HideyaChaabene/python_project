@@ -7,6 +7,7 @@ from functools import partial
 import bcrypt
 import logging
 from scapy.all  import *
+from scapy.all import IP, ICMP
 import time  
 ################################################################################################
 
@@ -71,6 +72,9 @@ class MainWindow(QMainWindow):
 
     # Initialisation de la base de données
     create_user_table()
+    # Initialisation des variables pour la détection d'attaques
+    self.suspected_ips = set()  # Initialisation de la variable suspected_ips
+    self.MAX_PING_SIZE = 1024  # Définir une taille maximale pour les paquets ICMP
 
     ################################################################################################
     # apply json stylesheet
@@ -110,6 +114,7 @@ class MainWindow(QMainWindow):
     self.ui.start.clicked.connect(self.start_sniffing)
     self.ui.stop.clicked.connect(self.stop_sniffing)
     self.ui.clear_sniffing.clicked.connect(self.clear_sniffing_data)
+    self.ui.save_file.clicked.connect(self.save_packets)
     
     #flitre button 
     # Bouton pour appliquer les filtres
@@ -651,7 +656,7 @@ class MainWindow(QMainWindow):
             if not self.sniffing:
                 return  # Arrêter le sniffing si self.sniffing est False
             self.Ajout_menace(packet)
-            #self.process_packet_auto_block(packet)
+            self.process_packet_auto_block(packet)
             self.captured_packets.append(packet)
             self.display_packet(packet)
 
@@ -1172,7 +1177,7 @@ class MainWindow(QMainWindow):
     """
     Ajoute le domaine de la ligne sélectionnée à la DNS liste.
     """
-    domain = self.ui.menace_table.item(row, 9).text()  # Récupérer le domaine
+    domain = self.ui.menace_table.item(row, 3).text()  # Récupérer le domaine
 
     # Naviguer vers la page "dns" dans le stackedWidget "listes"
     self.ui.listes.setCurrentWidget(self.ui.dns)
@@ -1234,8 +1239,8 @@ class MainWindow(QMainWindow):
     Détecter les paquets graves et bloquer automatiquement l'adresse IP.
     :param packet: Le paquet capturé.
     """
-    if packet.haslayer(scapy.IP) and packet.haslayer(scapy.ICMP):
-        ip_src = packet[scapy.IP].src
+    if packet.haslayer(IP) and packet.haslayer(ICMP):  # Utilisez IP et ICMP directement
+        ip_src = packet[IP].src
         icmp_len = len(packet)
 
         # Détecter les paquets ICMP trop volumineux
@@ -1244,7 +1249,6 @@ class MainWindow(QMainWindow):
             if ip_src not in self.suspected_ips:
                 self.suspected_ips.add(ip_src)
                 self.block_ip_auto(ip_src, "ICMP Grave")
-
   def block_ip_auto(self, ip_address, attack_type):
     """
     Bloquer automatiquement une adresse IP en cas de détection d'une activité grave.
@@ -1319,8 +1323,11 @@ class MainWindow(QMainWindow):
     for col in range(self.ui.alert_table.columnCount()):
         self.ui.alert_table.item(row_position, col).setBackground(Qt.red)
 
+    print(f"Alerte ajoutée : {attack_type} depuis {ip_address}")
 
 
+ ########################################" Profil " #################################"""
+  
 
 
 
