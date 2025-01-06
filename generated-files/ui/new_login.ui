@@ -75,7 +75,7 @@
           </size>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="login">
           <property name="minimumSize">
@@ -2134,7 +2134,7 @@ background-color: transparent;
                  <item>
                   <widget class="QStackedWidget" name="pages_screen">
                    <property name="currentIndex">
-                    <number>0</number>
+                    <number>1</number>
                    </property>
                    <widget class="QWidget" name="packet">
                     <layout class="QVBoxLayout" name="verticalLayout_26">
@@ -2534,7 +2534,7 @@ color: #ffffff;</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>716</width>
+                                 <width>365</width>
                                  <height>622</height>
                                 </rect>
                                </property>
@@ -2837,7 +2837,23 @@ color: #ffffff;</string>
                    <widget class="QWidget" name="alert">
                     <layout class="QVBoxLayout" name="verticalLayout_41">
                      <item>
-                      <widget class="QTableWidget" name="tableWidget_4" />
+                      <widget class="QTableWidget" name="alert_table">
+                       <column>
+                        <property name="text">
+                         <string>IP Adresse</string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Type d'attaque </string>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Heure de détection</string>
+                        </property>
+                       </column>
+                      </widget>
                      </item>
                     </layout>
                    </widget>
@@ -3078,7 +3094,7 @@ border: 1px  solid #008080;</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>716</width>
+                                 <width>317</width>
                                  <height>622</height>
                                 </rect>
                                </property>

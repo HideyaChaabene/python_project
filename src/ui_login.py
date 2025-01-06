@@ -1139,7 +1139,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 716, 622))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 365, 622))
         self.verticalLayout_31 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_31.setObjectName(u"verticalLayout_31")
         self.frame_30 = QFrame(self.scrollAreaWidgetContents_2)
@@ -1292,10 +1292,18 @@ class Ui_MainWindow(object):
         self.alert.setObjectName(u"alert")
         self.verticalLayout_41 = QVBoxLayout(self.alert)
         self.verticalLayout_41.setObjectName(u"verticalLayout_41")
-        self.tableWidget_4 = QTableWidget(self.alert)
-        self.tableWidget_4.setObjectName(u"tableWidget_4")
+        self.alert_table = QTableWidget(self.alert)
+        if (self.alert_table.columnCount() < 3):
+            self.alert_table.setColumnCount(3)
+        __qtablewidgetitem20 = QTableWidgetItem()
+        self.alert_table.setHorizontalHeaderItem(0, __qtablewidgetitem20)
+        __qtablewidgetitem21 = QTableWidgetItem()
+        self.alert_table.setHorizontalHeaderItem(1, __qtablewidgetitem21)
+        __qtablewidgetitem22 = QTableWidgetItem()
+        self.alert_table.setHorizontalHeaderItem(2, __qtablewidgetitem22)
+        self.alert_table.setObjectName(u"alert_table")
 
-        self.verticalLayout_41.addWidget(self.tableWidget_4)
+        self.verticalLayout_41.addWidget(self.alert_table)
 
         self.pages_screen.addWidget(self.alert)
         self.menace = QWidget()
@@ -1305,26 +1313,26 @@ class Ui_MainWindow(object):
         self.menace_table = QTableWidget(self.menace)
         if (self.menace_table.columnCount() < 10):
             self.menace_table.setColumnCount(10)
-        __qtablewidgetitem20 = QTableWidgetItem()
-        self.menace_table.setHorizontalHeaderItem(0, __qtablewidgetitem20)
-        __qtablewidgetitem21 = QTableWidgetItem()
-        self.menace_table.setHorizontalHeaderItem(1, __qtablewidgetitem21)
-        __qtablewidgetitem22 = QTableWidgetItem()
-        self.menace_table.setHorizontalHeaderItem(2, __qtablewidgetitem22)
         __qtablewidgetitem23 = QTableWidgetItem()
-        self.menace_table.setHorizontalHeaderItem(3, __qtablewidgetitem23)
+        self.menace_table.setHorizontalHeaderItem(0, __qtablewidgetitem23)
         __qtablewidgetitem24 = QTableWidgetItem()
-        self.menace_table.setHorizontalHeaderItem(4, __qtablewidgetitem24)
+        self.menace_table.setHorizontalHeaderItem(1, __qtablewidgetitem24)
         __qtablewidgetitem25 = QTableWidgetItem()
-        self.menace_table.setHorizontalHeaderItem(5, __qtablewidgetitem25)
+        self.menace_table.setHorizontalHeaderItem(2, __qtablewidgetitem25)
         __qtablewidgetitem26 = QTableWidgetItem()
-        self.menace_table.setHorizontalHeaderItem(6, __qtablewidgetitem26)
+        self.menace_table.setHorizontalHeaderItem(3, __qtablewidgetitem26)
         __qtablewidgetitem27 = QTableWidgetItem()
-        self.menace_table.setHorizontalHeaderItem(7, __qtablewidgetitem27)
+        self.menace_table.setHorizontalHeaderItem(4, __qtablewidgetitem27)
         __qtablewidgetitem28 = QTableWidgetItem()
-        self.menace_table.setHorizontalHeaderItem(8, __qtablewidgetitem28)
+        self.menace_table.setHorizontalHeaderItem(5, __qtablewidgetitem28)
         __qtablewidgetitem29 = QTableWidgetItem()
-        self.menace_table.setHorizontalHeaderItem(9, __qtablewidgetitem29)
+        self.menace_table.setHorizontalHeaderItem(6, __qtablewidgetitem29)
+        __qtablewidgetitem30 = QTableWidgetItem()
+        self.menace_table.setHorizontalHeaderItem(7, __qtablewidgetitem30)
+        __qtablewidgetitem31 = QTableWidgetItem()
+        self.menace_table.setHorizontalHeaderItem(8, __qtablewidgetitem31)
+        __qtablewidgetitem32 = QTableWidgetItem()
+        self.menace_table.setHorizontalHeaderItem(9, __qtablewidgetitem32)
         self.menace_table.setObjectName(u"menace_table")
         self.menace_table.setContextMenuPolicy(Qt.CustomContextMenu)
 
@@ -1412,7 +1420,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 716, 622))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 317, 622))
         self.verticalLayout_29 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_29.setObjectName(u"verticalLayout_29")
         self.frame_25 = QFrame(self.scrollAreaWidgetContents)
@@ -1646,10 +1654,10 @@ class Ui_MainWindow(object):
         self.black_table = QTableWidget(self.black)
         if (self.black_table.columnCount() < 2):
             self.black_table.setColumnCount(2)
-        __qtablewidgetitem30 = QTableWidgetItem()
-        self.black_table.setHorizontalHeaderItem(0, __qtablewidgetitem30)
-        __qtablewidgetitem31 = QTableWidgetItem()
-        self.black_table.setHorizontalHeaderItem(1, __qtablewidgetitem31)
+        __qtablewidgetitem33 = QTableWidgetItem()
+        self.black_table.setHorizontalHeaderItem(0, __qtablewidgetitem33)
+        __qtablewidgetitem34 = QTableWidgetItem()
+        self.black_table.setHorizontalHeaderItem(1, __qtablewidgetitem34)
         self.black_table.setObjectName(u"black_table")
 
         self.horizontalLayout_30.addWidget(self.black_table)
@@ -1662,10 +1670,10 @@ class Ui_MainWindow(object):
         self.white_table = QTableWidget(self.white)
         if (self.white_table.columnCount() < 2):
             self.white_table.setColumnCount(2)
-        __qtablewidgetitem32 = QTableWidgetItem()
-        self.white_table.setHorizontalHeaderItem(0, __qtablewidgetitem32)
-        __qtablewidgetitem33 = QTableWidgetItem()
-        self.white_table.setHorizontalHeaderItem(1, __qtablewidgetitem33)
+        __qtablewidgetitem35 = QTableWidgetItem()
+        self.white_table.setHorizontalHeaderItem(0, __qtablewidgetitem35)
+        __qtablewidgetitem36 = QTableWidgetItem()
+        self.white_table.setHorizontalHeaderItem(1, __qtablewidgetitem36)
         self.white_table.setObjectName(u"white_table")
 
         self.verticalLayout_45.addWidget(self.white_table)
@@ -1678,10 +1686,10 @@ class Ui_MainWindow(object):
         self.dns_table = QTableWidget(self.dns)
         if (self.dns_table.columnCount() < 2):
             self.dns_table.setColumnCount(2)
-        __qtablewidgetitem34 = QTableWidgetItem()
-        self.dns_table.setHorizontalHeaderItem(0, __qtablewidgetitem34)
-        __qtablewidgetitem35 = QTableWidgetItem()
-        self.dns_table.setHorizontalHeaderItem(1, __qtablewidgetitem35)
+        __qtablewidgetitem37 = QTableWidgetItem()
+        self.dns_table.setHorizontalHeaderItem(0, __qtablewidgetitem37)
+        __qtablewidgetitem38 = QTableWidgetItem()
+        self.dns_table.setHorizontalHeaderItem(1, __qtablewidgetitem38)
         self.dns_table.setObjectName(u"dns_table")
 
         self.verticalLayout_46.addWidget(self.dns_table)
@@ -1716,10 +1724,10 @@ class Ui_MainWindow(object):
         self.menuBtn_3.toggled.connect(self.icon_only_widget.setVisible)
         self.menuBtn_3.toggled.connect(self.icon_text_widget_3.setHidden)
 
-        self.globale_screen.setCurrentIndex(0)
+        self.globale_screen.setCurrentIndex(1)
         self.index_stack.setCurrentIndex(0)
         self.form_stack.setCurrentIndex(0)
-        self.pages_screen.setCurrentIndex(0)
+        self.pages_screen.setCurrentIndex(1)
         self.packets.setCurrentIndex(0)
         self.profil_edit.setCurrentIndex(0)
         self.listes.setCurrentIndex(0)
@@ -1849,26 +1857,32 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem18.setText(QCoreApplication.translate("MainWindow", u"Destination Port", None));
         ___qtablewidgetitem19 = self.tableWidget_2.horizontalHeaderItem(9)
         ___qtablewidgetitem19.setText(QCoreApplication.translate("MainWindow", u"Packet Type ", None));
-        ___qtablewidgetitem20 = self.menace_table.horizontalHeaderItem(0)
-        ___qtablewidgetitem20.setText(QCoreApplication.translate("MainWindow", u"TIME", None));
-        ___qtablewidgetitem21 = self.menace_table.horizontalHeaderItem(1)
-        ___qtablewidgetitem21.setText(QCoreApplication.translate("MainWindow", u"Source MAC", None));
-        ___qtablewidgetitem22 = self.menace_table.horizontalHeaderItem(2)
-        ___qtablewidgetitem22.setText(QCoreApplication.translate("MainWindow", u"Destination MAC", None));
-        ___qtablewidgetitem23 = self.menace_table.horizontalHeaderItem(3)
-        ___qtablewidgetitem23.setText(QCoreApplication.translate("MainWindow", u"Source IP", None));
-        ___qtablewidgetitem24 = self.menace_table.horizontalHeaderItem(4)
-        ___qtablewidgetitem24.setText(QCoreApplication.translate("MainWindow", u"Destination IP", None));
-        ___qtablewidgetitem25 = self.menace_table.horizontalHeaderItem(5)
-        ___qtablewidgetitem25.setText(QCoreApplication.translate("MainWindow", u"Protocol", None));
-        ___qtablewidgetitem26 = self.menace_table.horizontalHeaderItem(6)
-        ___qtablewidgetitem26.setText(QCoreApplication.translate("MainWindow", u"Length", None));
-        ___qtablewidgetitem27 = self.menace_table.horizontalHeaderItem(7)
-        ___qtablewidgetitem27.setText(QCoreApplication.translate("MainWindow", u"Source Port", None));
-        ___qtablewidgetitem28 = self.menace_table.horizontalHeaderItem(8)
-        ___qtablewidgetitem28.setText(QCoreApplication.translate("MainWindow", u"Destination Port", None));
-        ___qtablewidgetitem29 = self.menace_table.horizontalHeaderItem(9)
-        ___qtablewidgetitem29.setText(QCoreApplication.translate("MainWindow", u"Packet Type ", None));
+        ___qtablewidgetitem20 = self.alert_table.horizontalHeaderItem(0)
+        ___qtablewidgetitem20.setText(QCoreApplication.translate("MainWindow", u"IP Adresse", None));
+        ___qtablewidgetitem21 = self.alert_table.horizontalHeaderItem(1)
+        ___qtablewidgetitem21.setText(QCoreApplication.translate("MainWindow", u"Type d'attaque ", None));
+        ___qtablewidgetitem22 = self.alert_table.horizontalHeaderItem(2)
+        ___qtablewidgetitem22.setText(QCoreApplication.translate("MainWindow", u"Heure de d\u00e9tection", None));
+        ___qtablewidgetitem23 = self.menace_table.horizontalHeaderItem(0)
+        ___qtablewidgetitem23.setText(QCoreApplication.translate("MainWindow", u"TIME", None));
+        ___qtablewidgetitem24 = self.menace_table.horizontalHeaderItem(1)
+        ___qtablewidgetitem24.setText(QCoreApplication.translate("MainWindow", u"Source MAC", None));
+        ___qtablewidgetitem25 = self.menace_table.horizontalHeaderItem(2)
+        ___qtablewidgetitem25.setText(QCoreApplication.translate("MainWindow", u"Destination MAC", None));
+        ___qtablewidgetitem26 = self.menace_table.horizontalHeaderItem(3)
+        ___qtablewidgetitem26.setText(QCoreApplication.translate("MainWindow", u"Source IP", None));
+        ___qtablewidgetitem27 = self.menace_table.horizontalHeaderItem(4)
+        ___qtablewidgetitem27.setText(QCoreApplication.translate("MainWindow", u"Destination IP", None));
+        ___qtablewidgetitem28 = self.menace_table.horizontalHeaderItem(5)
+        ___qtablewidgetitem28.setText(QCoreApplication.translate("MainWindow", u"Protocol", None));
+        ___qtablewidgetitem29 = self.menace_table.horizontalHeaderItem(6)
+        ___qtablewidgetitem29.setText(QCoreApplication.translate("MainWindow", u"Length", None));
+        ___qtablewidgetitem30 = self.menace_table.horizontalHeaderItem(7)
+        ___qtablewidgetitem30.setText(QCoreApplication.translate("MainWindow", u"Source Port", None));
+        ___qtablewidgetitem31 = self.menace_table.horizontalHeaderItem(8)
+        ___qtablewidgetitem31.setText(QCoreApplication.translate("MainWindow", u"Destination Port", None));
+        ___qtablewidgetitem32 = self.menace_table.horizontalHeaderItem(9)
+        ___qtablewidgetitem32.setText(QCoreApplication.translate("MainWindow", u"Packet Type ", None));
         self.editbtn.setText(QCoreApplication.translate("MainWindow", u"Modifier Profil", None))
         self.deletbtn.setText(QCoreApplication.translate("MainWindow", u"Supprimer Compte", None))
         self.label_17.setText("")
@@ -1887,17 +1901,17 @@ class Ui_MainWindow(object):
         self.black_list.setText(QCoreApplication.translate("MainWindow", u"Black Liste", None))
         self.white_list.setText(QCoreApplication.translate("MainWindow", u"White Liste", None))
         self.dns_list.setText(QCoreApplication.translate("MainWindow", u"DNS Liste", None))
-        ___qtablewidgetitem30 = self.black_table.horizontalHeaderItem(0)
-        ___qtablewidgetitem30.setText(QCoreApplication.translate("MainWindow", u"IP Adresse", None));
-        ___qtablewidgetitem31 = self.black_table.horizontalHeaderItem(1)
-        ___qtablewidgetitem31.setText(QCoreApplication.translate("MainWindow", u"black", None));
-        ___qtablewidgetitem32 = self.white_table.horizontalHeaderItem(0)
-        ___qtablewidgetitem32.setText(QCoreApplication.translate("MainWindow", u"IP Adresse", None));
-        ___qtablewidgetitem33 = self.white_table.horizontalHeaderItem(1)
-        ___qtablewidgetitem33.setText(QCoreApplication.translate("MainWindow", u"white", None));
-        ___qtablewidgetitem34 = self.dns_table.horizontalHeaderItem(0)
-        ___qtablewidgetitem34.setText(QCoreApplication.translate("MainWindow", u"IP Adresse", None));
-        ___qtablewidgetitem35 = self.dns_table.horizontalHeaderItem(1)
-        ___qtablewidgetitem35.setText(QCoreApplication.translate("MainWindow", u"dns", None));
+        ___qtablewidgetitem33 = self.black_table.horizontalHeaderItem(0)
+        ___qtablewidgetitem33.setText(QCoreApplication.translate("MainWindow", u"IP Adresse", None));
+        ___qtablewidgetitem34 = self.black_table.horizontalHeaderItem(1)
+        ___qtablewidgetitem34.setText(QCoreApplication.translate("MainWindow", u"black", None));
+        ___qtablewidgetitem35 = self.white_table.horizontalHeaderItem(0)
+        ___qtablewidgetitem35.setText(QCoreApplication.translate("MainWindow", u"IP Adresse", None));
+        ___qtablewidgetitem36 = self.white_table.horizontalHeaderItem(1)
+        ___qtablewidgetitem36.setText(QCoreApplication.translate("MainWindow", u"white", None));
+        ___qtablewidgetitem37 = self.dns_table.horizontalHeaderItem(0)
+        ___qtablewidgetitem37.setText(QCoreApplication.translate("MainWindow", u"IP Adresse", None));
+        ___qtablewidgetitem38 = self.dns_table.horizontalHeaderItem(1)
+        ___qtablewidgetitem38.setText(QCoreApplication.translate("MainWindow", u"dns", None));
     # retranslateUi
 

@@ -6,13 +6,17 @@ import threading
 from functools import partial
 import bcrypt
 import logging
-from scapy.all import sniff, Ether, IP, TCP, UDP, ICMP, ARP, DNS, DHCP, IPv6
+from scapy.all  import *
+import time  
 ################################################################################################
 
 from src.ui_login import *
 ################################################################################################
-
-
+from PySide6.QtWidgets import QApplication, QInputDialog, QWidget, QFileDialog
+import csv
+import platform
+import subprocess
+import os
 ################################################################################################
 
 from Custom_Widgets import *
@@ -647,6 +651,7 @@ class MainWindow(QMainWindow):
             if not self.sniffing:
                 return  # Arrêter le sniffing si self.sniffing est False
             self.Ajout_menace(packet)
+            #self.process_packet_auto_block(packet)
             self.captured_packets.append(packet)
             self.display_packet(packet)
 
@@ -726,6 +731,94 @@ class MainWindow(QMainWindow):
     except Exception as e:
         print(f"Erreur lors de la réinitialisation des données de capture : {e}")
         self.show_message("Error", f"Erreur lors de la réinitialisation des données de capture : {str(e)}")
+ 
+  def save_packets(self):
+    """Sauvegarder les paquets capturés au format PCAP ou CSV."""
+    if not self.captured_packets:
+        self.show_message("Error", "No packets to save!")
+        return
+
+    # Demander à l'utilisateur de choisir le format
+    format_choice, ok = QInputDialog.getItem(
+        self, "Save Packets", "Choose format:", ["PCAP", "CSV"], 0, False
+        )
+    if not ok:
+        return  # L'utilisateur a annulé
+
+    # Demander à l'utilisateur de choisir l'emplacement du fichier
+    file_path, _ = QFileDialog.getSaveFileName(
+        self, "Save Packets", "", f"{format_choice} Files (*.{format_choice.lower()})"
+        )
+    if not file_path:
+        return  # L'utilisateur a annulé
+
+    try:
+        if format_choice == "PCAP":
+            self.save_packets_as_pcap(file_path)
+        elif format_choice == "CSV":
+            self.save_packets_as_csv(file_path)
+        self.show_message("Success", f"Packets saved successfully to {file_path}!")
+    except Exception as e:
+        self.show_message("Error", f"Failed to save packets: {str(e)}")
+ 
+ 
+  def save_packets_as_pcap(self, file_path):
+    """Sauvegarder les paquets au format PCAP."""
+    wrpcap(file_path, self.captured_packets)
+
+  def save_packets_as_csv(self, file_path):
+    """Sauvegarder les paquets au format CSV."""
+    with open(file_path, mode="w", newline="") as csv_file:
+        writer = csv.writer(csv_file)
+        # En-tête du CSV
+        writer.writerow([
+            "Timestamp", "Source MAC", "Destination MAC", "Source IP", "Destination IP",
+            "Protocol", "Length", "Source Port", "Destination Port", "Packet Type"
+            ])
+            # Données des paquets
+        for packet in self.captured_packets:
+            row = self.extract_packet_info(packet)
+            writer.writerow(row)
+ 
+  def extract_packet_info(self, packet):
+    """Extraire les informations d'un paquet pour le CSV."""
+    timestamp = packet.time
+    source_mac = packet.src if Ether in packet else ""
+    dest_mac = packet.dst if Ether in packet else ""
+    source_ip = packet[IP].src if IP in packet else ""
+    dest_ip = packet[IP].dst if IP in packet else ""
+    protocol = packet.proto if IP in packet else ""
+    length = len(packet)
+    packet_type = ""
+    source_port = ""
+    dest_port = ""
+
+    if TCP in packet:
+        packet_type = "TCP"
+        source_port = packet[TCP].sport
+        dest_port = packet[TCP].dport
+    elif UDP in packet:
+        packet_type = "UDP"
+        source_port = packet[UDP].sport
+        dest_port = packet[UDP].dport
+    elif ICMP in packet:
+        packet_type = "ICMP"
+    elif ARP in packet:
+        packet_type = "ARP"
+    elif DNS in packet:
+        packet_type = "DNS"
+    elif DHCP in packet:
+        packet_type = "DHCP"
+    elif IPv6 in packet:
+        packet_type = "IPv6"
+    elif IP in packet:
+        packet_type = "IP"
+
+    return [
+        timestamp, source_mac, dest_mac, source_ip, dest_ip,
+        protocol, length, source_port, dest_port, packet_type
+        ]      
+ 
  ########################################################################## FILTER #############################################################################################################
   
   
@@ -1044,7 +1137,7 @@ class MainWindow(QMainWindow):
   
   def add_to_blacklist(self, row):
     """
-    Ajoute l'adresse IP de la ligne sélectionnée à la blackliste.
+    Ajoute l'adresse IP de la ligne sélectionnée à la blackliste et la bloque sur le système.
     """
     ip_address = self.ui.menace_table.item(row, 3).text()  # Récupérer l'adresse IP
 
@@ -1054,8 +1147,11 @@ class MainWindow(QMainWindow):
     # Ajouter l'adresse IP dans black_table
     self.add_to_table(self.ui.black_table, ip_address)
 
-    # Afficher un message de confirmation
-    self.show_message("Blackliste", f"Adresse IP {ip_address} ajoutée à la blackliste.")
+    # Bloquer l'adresse IP sur le système
+    if self.block_ip(ip_address):
+        self.show_message("Blackliste", f"Adresse IP {ip_address} ajoutée à la blackliste et bloquée.")
+    else:
+        self.show_message("Erreur", f"Impossible de bloquer l'adresse IP {ip_address}.")
 
   def add_to_whitelist(self, row):
     """
@@ -1103,7 +1199,136 @@ class MainWindow(QMainWindow):
     table.insertRow(row_position)
     table.setItem(row_position, 0, QTableWidgetItem(entry))  # Ajouter l'entrée dans la première colonne
 
-################################################################################################
+  def block_ip(self, ip_address):
+    """
+    Bloque une adresse IP sur le système (Windows ou Linux).
+    :param ip_address: L'adresse IP à bloquer.
+    :return: True si le blocage a réussi, False sinon.
+    """
+    try:
+        system_os = platform.system()  # Détecter le système d'exploitation
+
+        if system_os == "Windows":
+            # Commande pour bloquer une adresse IP sous Windows
+            command = f"netsh advfirewall firewall add rule name=\"Block {ip_address}\" dir=in action=block remoteip={ip_address}"
+        elif system_os == "Linux":
+            # Commande pour bloquer une adresse IP sous Linux
+            command = f"iptables -A INPUT -s {ip_address} -j DROP"
+        else:
+            self.show_message("Erreur", "Système d'exploitation non pris en charge.")
+            return False
+
+        # Exécuter la commande système
+        subprocess.run(command, shell=True, check=True)
+        return True
+
+    except subprocess.CalledProcessError as e:
+        logging.error(f"Erreur lors du blocage de l'adresse IP {ip_address} : {e}")
+        return False
+    except Exception as e:
+        logging.error(f"Erreur inattendue lors du blocage de l'adresse IP {ip_address} : {e}")
+        return False
+################################################################### ALERT #############################
+  def process_packet_auto_block(self, packet):
+    """
+    Détecter les paquets graves et bloquer automatiquement l'adresse IP.
+    :param packet: Le paquet capturé.
+    """
+    if packet.haslayer(scapy.IP) and packet.haslayer(scapy.ICMP):
+        ip_src = packet[scapy.IP].src
+        icmp_len = len(packet)
+
+        # Détecter les paquets ICMP trop volumineux
+        if icmp_len > self.MAX_PING_SIZE:
+            print(f"Paquet ICMP trop grand détecté depuis {ip_src}, taille : {icmp_len} octets.")
+            if ip_src not in self.suspected_ips:
+                self.suspected_ips.add(ip_src)
+                self.block_ip_auto(ip_src, "ICMP Grave")
+
+  def block_ip_auto(self, ip_address, attack_type):
+    """
+    Bloquer automatiquement une adresse IP en cas de détection d'une activité grave.
+    :param ip_address: L'adresse IP à bloquer.
+    :param attack_type: Le type d'attaque détectée.
+    """
+    system = platform.system()
+    print(f"Attaque grave {attack_type} détectée ! Blocage automatique de l'adresse IP : {ip_address}")
+
+    # Bloquer l'adresse IP selon le système d'exploitation
+    if system == "Linux":
+        os.system(f"sudo iptables -A INPUT -s {ip_address} -j DROP")
+    elif system == "Windows":
+        os.system(f"netsh advfirewall firewall add rule name=\"Block {ip_address}\" dir=in action=block remoteip={ip_address}")
+    else:
+        print(f"Système non pris en charge : {system}")
+        return
+
+    # Ajouter l'alerte dans le tableau
+    self.add_alert(ip_address, attack_type)
+
+  def detect_brute_force_auto_block(self):
+    """
+    Détecter les attaques de brute force et bloquer automatiquement les adresses IP suspectes.
+    """
+    system = platform.system()
+    if system == "Windows":
+        brute_force_ips = self.detect_brute_force_windows()
+    elif system == "Linux":
+        brute_force_ips = self.detect_brute_force_linux()
+        ssh_brute_force_ips = self.detect_ssh_brute_force()
+    else:
+        print("Système non pris en charge.")
+        return
+
+    # Bloquer automatiquement les adresses IP suspectes
+    if brute_force_ips:
+        print("Activité de brute force suspecte détectée depuis les adresses IP suivantes :")
+        for ip, attempts in brute_force_ips.items():
+            print(f"IP: {ip} - {attempts} tentatives échouées")
+            self.block_ip_auto(ip, "Brute Force")
+
+    if 'ssh_brute_force_ips' in locals() and ssh_brute_force_ips:
+        print("Activité de brute force SSH suspecte détectée depuis les adresses IP suivantes :")
+        for ip, attempts in ssh_brute_force_ips.items():
+            print(f"IP: {ip} - {attempts} tentatives échouées")
+            self.block_ip_auto(ip, "SSH Brute Force")
+
+
+  def add_alert(self, ip_address, attack_type):
+    """
+    Ajouter une alerte dans le tableau alert_table.
+    :param ip_address: L'adresse IP suspecte.
+    :param attack_type: Le type d'attaque détectée.
+    """
+    # Vérifier si le tableau alert_table existe
+    if not hasattr(self.ui, 'alert_table'):
+        print("Erreur : Le tableau alert_table n'existe pas dans l'interface utilisateur.")
+        return
+
+    # Ajouter une nouvelle ligne dans le tableau
+    row_position = self.ui.alert_table.rowCount()
+    self.ui.alert_table.insertRow(row_position)
+
+    # Ajouter les informations dans les cellules du tableau
+    self.ui.alert_table.setItem(row_position, 0, QTableWidgetItem(time.strftime("%Y-%m-%d %H:%M:%S")))  # Timestamp
+    self.ui.alert_table.setItem(row_position, 1, QTableWidgetItem(attack_type))  # Type d'attaque
+    self.ui.alert_table.setItem(row_position, 2, QTableWidgetItem(ip_address))  # Adresse IP
+    self.ui.alert_table.setItem(row_position, 3, QTableWidgetItem("Bloqué"))  # Action
+
+    # Optionnel : Colorer la ligne en rouge pour indiquer une alerte grave
+    for col in range(self.ui.alert_table.columnCount()):
+        self.ui.alert_table.item(row_position, col).setBackground(Qt.red)
+
+
+
+
+
+
+
+
+
+
+
 ## Execute App
 ################################################################################################
 if __name__ == "__main__":
